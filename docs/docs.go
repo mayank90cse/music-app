@@ -36,6 +36,15 @@ const docTemplate = `{
                     "tracks"
                 ],
                 "summary": "Get details of all music tracks by artist",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Artist",
+                        "name": "artist",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -56,6 +65,15 @@ const docTemplate = `{
                     "tracks"
                 ],
                 "summary": "Create music tracks metadata",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ISRC",
+                        "name": "isrc",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -76,6 +94,15 @@ const docTemplate = `{
                     "tracks"
                 ],
                 "summary": "Get details of all music tracks",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ISRC",
+                        "name": "isrc",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"

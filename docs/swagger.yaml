@@ -17,6 +17,12 @@ paths:
       consumes:
       - application/json
       description: Get details of all tracks
+      parameters:
+      - description: Artist
+        in: query
+        name: artist
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -30,6 +36,12 @@ paths:
       consumes:
       - application/json
       description: Store a new track with the input ISRC
+      parameters:
+      - description: ISRC
+        in: query
+        name: isrc
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -43,6 +55,12 @@ paths:
       consumes:
       - application/json
       description: Get details of all tracks
+      parameters:
+      - description: ISRC
+        in: path
+        name: isrc
+        required: true
+        type: string
       produces:
       - application/json
       responses:

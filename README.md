@@ -10,16 +10,25 @@
 
 3. Setup spotify <br/>
    Add ENV Vars below in launch.json <br/>
-   "APP_SPOTIFY_AUTH_BASE_URL":"https://accounts.spotify.com", <br/>
+   "APP_SPOTIFY_AUTH_BASE_URL":"https://accounts.spotify.com" <br/>
    "APP_SPOTIFY_AUTH_USERNAME":"***************" <br/>
    "APP_SPOTIFY_AUTH_PASSWORD":"***************" <br/>
    "APP_SPOTIFY_API_BASE_URL":"https://api.spotify.com" <br/>
 
-4. Open CMD and run commands below <br/>
+4. Setup Basic Auth creds for API authentication
+    "APP_MUSIC_API_AUTH_USERNAME":"mayank90cse" <br/>
+    "APP_MUSIC_API_AUTH_PASSWORD":"mayank123456" <br/>
+
+5. Open CMD and run commands below <br/>
    Run - go mod tidy <br/>
    Run - go run /main.go <br/>
- 
-5. Run below API Endpoints <br/>
+
+6. Swagger initialization Run below commands <br />
+   Run - swag init -g main.go <br/>
+   Run - go run /main.go <br/>
+   Open in Browser - http://localhost:8080/swagger/index.html
+
+7. Run below API Endpoints using Basic Auth <br/>
     Create Music Metadata <br/>
        [POST] localhost:8080/api/v1/metadata?isrc=USWB11403680 <br/>
     Find track By ISRC <br/>

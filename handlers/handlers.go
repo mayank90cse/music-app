@@ -30,6 +30,7 @@ func New(mainDB *mongo.Client) Context {
 // @Tags tracks
 // @Accept  json
 // @Produce  json
+// @Param isrc query string true "ISRC"
 // @Success 200
 // @Router /api/v1/metadata [post]
 func (ctx Context) CreateMusicData(w http.ResponseWriter, r *http.Request) {
@@ -83,6 +84,7 @@ func (ctx Context) CreateMusicData(w http.ResponseWriter, r *http.Request) {
 // @Tags tracks
 // @Accept  json
 // @Produce  json
+// @Param isrc path string true "ISRC"
 // @Success 200
 // @Router /api/v1/track/{isrc} [get]
 func (ctx Context) FetchMusicByIsrc(w http.ResponseWriter, r *http.Request) {
@@ -118,6 +120,7 @@ func (ctx Context) FetchMusicByIsrc(w http.ResponseWriter, r *http.Request) {
 // @Tags tracks
 // @Accept  json
 // @Produce  json
+// @Param artist query string true "Artist"
 // @Success 200
 // @Router /api/v1/artist/track [get]
 func (ctx Context) FetchMusicByArtist(w http.ResponseWriter, r *http.Request) {

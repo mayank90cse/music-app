@@ -14,7 +14,9 @@
             "APP_SPOTIFY_AUTH_BASE_URL":"https://accounts.spotify.com",
             "APP_SPOTIFY_AUTH_USERNAME":"43aa34da02954f03bdded818fd8294ef",
             "APP_SPOTIFY_AUTH_PASSWORD":"7e7f73eeb844434aa6fd3f1c01bfab6b",
-            "APP_SPOTIFY_API_BASE_URL":"https://api.spotify.com"
+            "APP_SPOTIFY_API_BASE_URL":"https://api.spotify.com",
+            "APP_MUSIC_API_AUTH_USERNAME":"mayank90cse",
+            "APP_MUSIC_API_AUTH_PASSWORD":"mayank123456"
         }
     }
     ]
