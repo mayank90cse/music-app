@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "0505452a-c4ff-4156-82c6-b09b4135b0e2",
+		"name": "music-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "842161"
+	},
+	"item": [
+		{
+			"name": "Create Music Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/metadata?isrc=GBAYE0601477",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"metadata"
+					],
+					"query": [
+						{
+							"key": "isrc",
+							"value": "GBAYE0601477"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Music Data By ISRC",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/track/GBAYE0601477",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"track",
+						"GBAYE0601477"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Music Data By Artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/artist/track?artist=The Beatles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"artist",
+						"track"
+					],
+					"query": [
+						{
+							"key": "artist",
+							"value": "The Beatles"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
