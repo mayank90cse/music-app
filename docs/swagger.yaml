@@ -1,0 +1,54 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a sample serice for music app
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Music API
+  version: "1.0"
+paths:
+  /api/v1/artist/track:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all tracks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get details of all music tracks by artist
+      tags:
+      - tracks
+  /api/v1/metadata:
+    post:
+      consumes:
+      - application/json
+      description: Store a new track with the input ISRC
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create music tracks metadata
+      tags:
+      - tracks
+  /api/v1/track/{isrc}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all tracks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get details of all music tracks
+      tags:
+      - tracks
+swagger: "2.0"

@@ -18,9 +18,7 @@ type Context struct {
 	ApiBaseURL   string
 }
 
-/*
-Return Spotify Context for spotify connection
-*/
+// Return Spotify Context for spotify connection
 func New() Context {
 	authUrl := os.Getenv("APP_SPOTIFY_AUTH_BASE_URL")
 	user := os.Getenv("APP_SPOTIFY_AUTH_USERNAME")
@@ -41,9 +39,7 @@ type Error struct {
 	Desc string `json:"error_description,omitempty"`
 }
 
-/*
-Fetch Tracks by ISRC from Spotify
-*/
+// Fetch Tracks by ISRC from Spotify
 func (ctx Context) FetchTrack(isrc string) (*models.MusicData, error) {
 	var musicData models.MusicData
 
@@ -84,9 +80,7 @@ func (ctx Context) FetchTrack(isrc string) (*models.MusicData, error) {
 	return &musicData, nil
 }
 
-/*
-Get Auth Token from Spotify for tacks API access
-*/
+// Get Auth Token from Spotify for tacks API access
 func (ctx Context) GetToken() (string, error) {
 	user := ctx.AuthUsername
 	password := ctx.AuthPassword

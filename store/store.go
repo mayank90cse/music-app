@@ -18,18 +18,14 @@ const (
 	collName = "tracks"
 )
 
-/*
-Returns Store context for mongo connection
-*/
+// Returns Store context for mongo connection
 func New(mainDB *mongo.Client) Context {
 	dbName := os.Getenv("APP_MONGO_MUSIC_DB_NAME")
 	coll := mainDB.Database(dbName).Collection(collName)
 	return Context{dbClient: coll}
 }
 
-/*
-Insert track in mongo collection for a ISRC
-*/
+// Insert track in mongo collection for a ISRC
 func (ctx Context) InsertTrack(track models.Track) error {
 	id, err := ctx.dbClient.InsertOne(context.Background(), track)
 	if err != nil {
@@ -39,9 +35,7 @@ func (ctx Context) InsertTrack(track models.Track) error {
 	return nil
 }
 
-/*
-Check if track by isrc already exist in mongo collection
-*/
+// Check if track by isrc already exist in mongo collection
 func (ctx Context) IsTrackAlreadyExists(isrc string) (bool, error) {
 	filter := bson.M{"isrc": isrc}
 	count, err := ctx.dbClient.CountDocuments(context.Background(), filter)
@@ -51,9 +45,7 @@ func (ctx Context) IsTrackAlreadyExists(isrc string) (bool, error) {
 	return count > 0, nil
 }
 
-/*
-Find track by ISRC from mongoDB collection
-*/
+// Find track by ISRC from mongoDB collection
 func (ctx Context) FetchTrackByISRCFromDB(isrc string) (models.Track, error) {
 	filter := bson.M{"isrc": isrc}
 	var track models.Track
@@ -69,16 +61,14 @@ func (ctx Context) FetchTrackByISRCFromDB(isrc string) (models.Track, error) {
 	return track, nil
 }
 
-/*
-Find tracks by artist from mongoDB collection
-*/
+// Find tracks by artist from mongoDB collection
 func (ctx Context) FetchTracksByArtistFromDB(artist string) ([]models.Track, error) {
 	tracks := []models.Track{}
-	filter := bson.M{"artists": artist}
-
+	//filter := bson.M{"artists": artist}
+	filter := bson.D{{"artists", bson.D{{"$all", bson.A{artist}}}}}
 	cur, err := ctx.dbClient.Find(context.Background(), filter)
 	if err != nil {
-		log.Println("Error while fetching track from DB by isrc", err, artist)
+		log.Println("Error while fetching track from DB by artist", err, artist)
 		return nil, err
 	}
 

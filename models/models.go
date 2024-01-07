@@ -4,6 +4,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+//swagger:response track
 type Track struct {
 	ID       primitive.ObjectID `bson:"_id,omitempty"`
 	ImageURI string             `json:"imageURI,omitempty" bson:"imageURI,omitempty"`

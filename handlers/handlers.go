@@ -19,16 +19,19 @@ type Context struct {
 }
 
 func New(mainDB *mongo.Client) Context {
-
 	spotifyCtx := spotify.New()
 	storeCtx := store.New(mainDB)
-
 	return Context{storeCtx: storeCtx, spotifyClient: spotifyCtx}
 }
 
-/*
-Fetch Track By ISRC and store in Mongo collection
-*/
+// CreateMusicData godoc
+// @Summary Create music tracks metadata
+// @Description Store a new track with the input ISRC
+// @Tags tracks
+// @Accept  json
+// @Produce  json
+// @Success 200
+// @Router /api/v1/metadata [post]
 func (ctx Context) CreateMusicData(w http.ResponseWriter, r *http.Request) {
 	log.Println("Create Metadata")
 	isrc := r.URL.Query().Get("isrc")
@@ -74,9 +77,14 @@ func (ctx Context) CreateMusicData(w http.ResponseWriter, r *http.Request) {
 	respondWith(w, item, http.StatusOK)
 }
 
-/*
-Fetch Track By ISRC from Mongo collection
-*/
+// Fetch Track By ISRC from Mongo collection
+// @Summary Get details of all music tracks
+// @Description Get details of all tracks
+// @Tags tracks
+// @Accept  json
+// @Produce  json
+// @Success 200
+// @Router /api/v1/track/{isrc} [get]
 func (ctx Context) FetchMusicByIsrc(w http.ResponseWriter, r *http.Request) {
 	log.Println("Get Data By ISRC")
 	isrc := mux.Vars(r)["isrc"]
@@ -104,9 +112,14 @@ func (ctx Context) FetchMusicByIsrc(w http.ResponseWriter, r *http.Request) {
 	respondWith(w, track, http.StatusOK)
 }
 
-/*
-Search Tracks By Artist from DB
-*/
+// Search Tracks By Artist from DB
+// @Summary Get details of all music tracks by artist
+// @Description Get details of all tracks
+// @Tags tracks
+// @Accept  json
+// @Produce  json
+// @Success 200
+// @Router /api/v1/artist/track [get]
 func (ctx Context) FetchMusicByArtist(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Get Data By Artist")
 	artist := r.URL.Query().Get("artist")
